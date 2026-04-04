@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.output
+hero-video.mp4
+hero-video-v2.mp4
+hero-trail.mp4

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herel Physical Therapy | Healing Starts Here</title>
+  <meta name="description" content="Herel Physical Therapy in Palm Desert, CA. One-on-one care with Dr. Phillip Herel, DPT. Evidence-based treatment for orthopedic and neurological conditions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Fustat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <style>
+    /* ---- VIDEO HERO OVERRIDES ---- */
+    .vhero {
+      position: relative;
+      width: 100%;
+      min-height: 75vh;
+      overflow: hidden;
+      background: #000;
+    }
+    .vhero-video {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 115%;
+      height: 115%;
+      object-fit: cover;
+      object-position: center 40%;
+      opacity: 0;
+      z-index: 0;
+    }
+    .vhero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.5) 100%);
+      z-index: 1;
+    }
+
+    /* Nav over video */
+    .vhero-nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 120px;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .vhero-nav-logo {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -1.44px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .vhero-nav-logo span { color: var(--accent); }
+    .vhero-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .vhero-nav-links a {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .vhero-nav-links a:hover { color: #fff; }
+    .vhero-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .vhero-btn-ghost {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .vhero-btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+    .vhero-btn-solid {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--dark);
+      background: #fff;
+      border: none;
+      padding: 8px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .vhero-btn-solid:hover { background: var(--bg-alt); transform: translateY(-1px); }
+
+    /* Hero content */
+    .vhero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 120px 50px;
+    }
+
+    /* Badge */
+    .vhero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 6px 6px 6px 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .vhero-badge-dot {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #fff;
+    }
+    .vhero-badge-dot svg { width: 14px; height: 14px; fill: var(--accent); }
+    .vhero-badge-label {
+      background: rgba(255,255,255,0.18);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Headline */
+    .vhero-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: clamp(42px, 6vw, 80px);
+      letter-spacing: -4.8px;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* Subtitle */
+    .vhero-sub {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.4px;
+      color: rgba(255,255,255,0.75);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Search/CTA box */
+    .vhero-box {
+      width: 100%;
+      max-width: 728px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(0,0,0,0.24);
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .vhero-box-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8px 10px;
+    }
+    .vhero-box-top-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+    .vhero-upgrade {
+      background: rgba(90,225,76,0.89);
+      color: #000;
+      border: none;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .vhero-box-top-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+    .vhero-box-top-right svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.5); }
+
+    .vhero-input-wrap {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .vhero-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-size: 16px;
+      color: #000;
+      background: transparent;
+    }
+    .vhero-input::placeholder { color: rgba(0,0,0,0.4); }
+    .vhero-submit {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #000;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .vhero-submit:hover { background: var(--primary); }
+    .vhero-submit svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 2; fill: none; }
+
+    .vhero-box-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 8px 0;
+    }
+    .vhero-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .vhero-action {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .vhero-action:hover { background: rgba(255,255,255,0.2); }
+    .vhero-action svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.6); stroke-width: 1.5; fill: none; }
+    .vhero-counter {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Mobile adjustments for video hero */
+    @media (max-width: 768px) {
+      .vhero-nav { padding: 12px 20px; }
+      .vhero-nav-links { display: none; }
+      .vhero-content { padding: 40px 20px 60px; margin-top: 0; }
+      .vhero-title { letter-spacing: -2px; }
+      .vhero-sub { font-size: 17px; }
+      .vhero-box { padding: 10px; }
+      .vhero-box-top { display: none; }
+      .vhero-box-bottom { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VIDEO HERO -->
+  <section class="vhero">
+    <video
+      id="heroVideo"
+      class="vhero-video"
+      muted
+      playsinline
+      preload="auto"
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260329_050842_be71947f-f16e-4a14-810c-06e83d23ddb5.mp4"
+    ></video>
+    <div class="vhero-overlay"></div>
+
+    <!-- Nav -->
+    <nav class="vhero-nav">
+      <a href="index.html" class="vhero-nav-logo">Herel <span>PT</span></a>
+      <ul class="vhero-nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="why-us.html">Why Us</a></li>
+        <li><a href="team.html">Meet Dr. Phil</a></li>
+        <li><a href="patient-info.html">Patient Info</a></li>
+        <li><a href="optimize.html">Optimize</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="vhero-nav-right">
+        <a href="tel:4422345364" class="vhero-btn-ghost">442-234-5364</a>
+        <a href="contact.html" class="vhero-btn-solid">Book Now</a>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="vhero-content">
+
+      <!-- Badge -->
+      <div class="vhero-badge">
+        <div class="vhero-badge-dot">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          New
+        </div>
+        <div class="vhero-badge-label">Now offering CellCore detox protocols</div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="vhero-title">Herel Physical Therapy</h1>
+
+      <!-- Subtitle -->
+      <p class="vhero-sub">One-on-one, evidence-based physical therapy with a Doctor of Physical Therapy. Experience personalized care designed around your body, your goals, and your life.</p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-btns" style="justify-content:center;">
+        <a href="contact.html" class="vhero-btn-solid" style="padding:12px 32px; font-size:16px; border-radius:10px;">Book a Consultation</a>
+        <a href="about.html" class="vhero-btn-ghost" style="padding:12px 32px; font-size:16px; border-radius:10px;">Learn More</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REST OF PAGE (below hero) -->
+
+  <!-- About -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2-asym grid-align">
+        <div class="glass-light">
+          <div class="sh">
+            <span class="sh-label">About Us</span>
+            <h2>Personalized care, real results</h2>
+          </div>
+          <p style="color:var(--text-muted); margin-bottom: 1.5rem;">At Herel Physical Therapy, every session is one-on-one with a Doctor of Physical Therapy. No aides, no assistants, no generic treatment plans. We use evidence-based practice to design comprehensive, individualized treatment plans focused on long-term health, prevention, and recovery.</p>
+          <a href="about.html" class="btn btn-outline">Explore Our Approach</a>
+        </div>
+        <div class="img-frame" style="height:300px;">
+          <img src="images/treatment.webp" alt="Physical therapy training">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="section-lg section-alt">
+    <div class="container">
+      <div class="grid grid-2-asym grid-align" style="direction:rtl;">
+        <div class="glass-light" style="direction:ltr;">
+          <div class="sh">
+            <span class="sh-label">Our Story</span>
+            <h2>Your wellness journey starts here</h2>
+          </div>
+          <p style="color:var(--text-muted); margin-bottom: 1.5rem;">We believe everyone deserves to reach their full potential - regardless of injury, age, or physical challenges. Our mission is to not only provide top-tier physical therapy but also to equip patients with the knowledge, support, and motivation they need for long-term success.</p>
+          <a href="why-us.html" class="btn btn-primary">Why Choose Us</a>
+        </div>
+        <div class="img-frame img-tall" style="direction:ltr;">
+          <img src="images/hero-yoga.webp" alt="Patient wellness journey">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container">
+      <div class="sh sh-center">
+        <span class="sh-label">What We Offer</span>
+        <h2>Your path. Your goals. Our guidance.</h2>
+        <p>No crowded gyms or generic programs. Just expert, personalized physical therapy.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card">
+          <h3>Orthopedic Rehab</h3>
+          <p>Post-surgical recovery, back &amp; neck pain, rotator cuff, sciatica, and more.</p>
+        </div>
+        <div class="card">
+          <h3>Neurological Care</h3>
+          <p>Specialized treatment for stroke, Parkinson's, MS, TBI, and vestibular disorders.</p>
+        </div>
+        <div class="card">
+          <h3>Sports Medicine</h3>
+          <p>Return-to-sport programs, injury prevention, and performance optimization.</p>
+        </div>
+        <div class="card">
+          <h3>Holistic Wellness</h3>
+          <p>Integrative healing with CellCore protocols, Fullscript supplements, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="sh sh-center">
+        <span class="sh-label">Testimonials</span>
+        <h2>What our patients say</h2>
+        <p>Real stories from real patients who found healing at Herel PT.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="testimonial">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">Very knowledgeable and caring. Dr. Herel takes the time to understand your specific needs and creates a treatment plan that actually works. I've never felt so supported in my recovery.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-name">Sarah M.</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">Excellent motivation and monitoring throughout my entire treatment. After struggling elsewhere, I was amazed at the results I experienced at Herel PT. Truly one-of-a-kind care.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-name">James R.</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">I came in feeling hopeless after months of pain. Dr. Herel's personalized approach made all the difference. The one-on-one attention means you're never just another patient.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">L</div>
+            <div class="testimonial-name">Linda T.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Herel <span>PT</span></div>
+        <p class="footer-desc">Healing starts here. Evidence-based, one-on-one physical therapy in Palm Desert, CA.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="why-us.html">Why Us</a></li>
+          <li><a href="team.html">Meet Dr. Phil</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="patient-info.html">Patient Information</a></li>
+          <li><a href="optimize.html">Optimize Your Health</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:HerelTherapy@gmail.com">HerelTherapy@gmail.com</a></li>
+          <li><a href="tel:4422345364">442-234-5364</a></li>
+          <li><span style="color:rgba(255,255,255,0.6); font-size:0.88rem;">73010 El Paseo Suite 2B<br>Palm Desert, CA 92260</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Herel Physical Therapy.</p>
+      <div class="footer-social"><a href="https://instagram.com/herelpt" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => { if(typeof lucide !== 'undefined') lucide.createIcons(); });</script>
+
+  <!-- Video fade system - seamless loop, no black flash -->
+  <script>
+  (function() {
+    const video = document.getElementById('heroVideo');
+    if (!video) return;
+
+    let fadeRAF = null;
+    let fadingOut = false;
+
+    function cancelFade() {
+      if (fadeRAF) { cancelAnimationFrame(fadeRAF); fadeRAF = null; }
+    }
+
+    function fadeIn(duration) {
+      cancelFade();
+      fadingOut = false;
+      const start = performance.now();
+      const from = parseFloat(video.style.opacity) || 0;
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        video.style.opacity = from + (1 - from) * progress;
+        if (progress < 1) { fadeRAF = requestAnimationFrame(step); }
+        else { fadeRAF = null; }
+      }
+      fadeRAF = requestAnimationFrame(step);
+    }
+
+    // Initial fade in on first load
+    video.addEventListener('canplay', function onCanPlay() {
+      video.removeEventListener('canplay', onCanPlay);
+      video.play().then(() => fadeIn(400)).catch(() => {});
+    });
+
+    // Seamless loop - just reset to start, no fade out at all
+    video.addEventListener('timeupdate', function() {
+      if (video.duration && !fadingOut) {
+        const remaining = video.duration - video.currentTime;
+        // When close to end, silently reset to beginning - no fade out
+        if (remaining <= 0.15) {
+          fadingOut = true;
+          video.currentTime = 0;
+          fadingOut = false;
+        }
+      }
+    });
+
+    // Fallback if timeupdate misses it
+    video.addEventListener('ended', function() {
+      video.currentTime = 0;
+      fadingOut = false;
+      video.play().catch(() => {});
+    });
+  })();
+  </script>
+</body>
+</html>
