@@ -30,8 +30,8 @@
     .checks input[type=checkbox], .checks input[type=radio] { width: 14px; height: 14px; accent-color: #5B7C6E; cursor: pointer; }
     .consent-box { background: #f8f8f8; border: 1px solid #e0e0e0; border-radius: 6px; padding: 14px; font-size: 12px; line-height: 1.7; color: #555; margin: 10px 0 16px; }
     .sig-note { font-size: 11px; color: #999; margin-top: 6px; }
-    .submit-btn { display: block; width: 100%; margin-top: 28px; padding: 13px; background: #5B7C6E; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-    .submit-btn:hover { background: #4a6a5d; }
+    .print-btn { display: block; width: 100%; margin-top: 28px; padding: 13px; background: #5B7C6E; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .print-btn:hover { background: #4a6a5d; }
     @media (max-width: 600px) {
       .page { padding: 20px; margin: 0; border-radius: 0; }
       .field.half, .field.third { min-width: 100%; }
@@ -39,7 +39,7 @@
     @media print {
       body { background: #fff; }
       .page { box-shadow: none; margin: 0; padding: 20px; }
-      .submit-btn { display: none; }
+      .print-btn { display: none; }
     }
   </style>
 </head>
@@ -49,8 +49,8 @@
   <div class="logo">Herel <span>PT</span></div>
   <div class="subtitle">73010 El Paseo Suite 2B, Palm Desert, CA 92260 &nbsp;|&nbsp; 442-234-5364 &nbsp;|&nbsp; HerelTherapy@gmail.com</div>
 
-  <form name="intake-form" method="POST" netlify data-netlify="true">
-    <input type="hidden" name="form-name" value="intake-form">
+  
+    
 
     <h2>Patient Information</h2>
     <div class="row">
@@ -192,9 +192,10 @@
       <div class="field half"><label>Date *</label><input type="date" name="signature_date" required></div>
     </div>
     <p class="sig-note">If patient is a minor, parent/guardian must complete and sign.</p>
+    <button class="print-btn" onclick="window.print()">Print Form</button>
 
-    <button type="submit" class="submit-btn">Submit Form</button>
-  </form>
+
+
 
 </div>
 </body>
