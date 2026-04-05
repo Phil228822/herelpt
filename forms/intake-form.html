@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Intake Form | Herel Physical Therapy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; font-size: 13px; color: #222; background: #fff; padding: 32px; max-width: 760px; margin: 0 auto; }
+    .logo { font-size: 22px; font-weight: 700; letter-spacing: -1px; margin-bottom: 4px; }
+    .logo span { color: #5B7C6E; }
+    .subtitle { font-size: 11px; color: #888; margin-bottom: 24px; }
+    h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5B7C6E; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin: 20px 0 12px; }
+    .row { display: flex; gap: 16px; margin-bottom: 10px; }
+    .field { flex: 1; }
+    .field.half { flex: 0.5; }
+    .field.third { flex: 0.33; }
+    label { display: block; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+    .line { border: none; border-bottom: 1px solid #bbb; width: 100%; height: 22px; display: block; background: transparent; }
+    .checks { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 8px; }
+    .checks label { font-size: 12px; color: #333; text-transform: none; letter-spacing: 0; display: flex; align-items: center; gap: 5px; }
+    .checks input[type=checkbox] { width: 13px; height: 13px; }
+    .pain-scale { display: flex; gap: 0; margin: 6px 0 12px; }
+    .pain-scale span { flex: 1; text-align: center; font-size: 11px; border: 1px solid #bbb; padding: 5px 0; border-left: none; }
+    .pain-scale span:first-child { border-left: 1px solid #bbb; border-radius: 4px 0 0 4px; }
+    .pain-scale span:last-child { border-radius: 0 4px 4px 0; }
+    .consent-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 6px; padding: 14px; font-size: 11.5px; line-height: 1.6; color: #444; margin: 12px 0; }
+    .sig-row { display: flex; gap: 24px; margin-top: 16px; }
+    .sig-row .field { flex: 2; }
+    .sig-row .field.date { flex: 1; }
+    @media print {
+      body { padding: 16px; }
+      button { display: none; }
+    }
+    .print-btn { display: block; margin: 24px auto 0; padding: 10px 32px; background: #5B7C6E; color: #fff; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+    .note { font-size: 11px; color: #999; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="logo">Herel <span>PT</span></div>
+  <div class="subtitle">73010 El Paseo Suite 2B, Palm Desert, CA 92260 &nbsp;|&nbsp; 442-234-5364 &nbsp;|&nbsp; HerelTherapy@gmail.com</div>
+
+  <h2>Patient Information</h2>
+  <div class="row">
+    <div class="field"><label>Full Name</label><span class="line"></span></div>
+    <div class="field half"><label>Date of Birth</label><span class="line"></span></div>
+    <div class="field half"><label>Today's Date</label><span class="line"></span></div>
+  </div>
+  <div class="row">
+    <div class="field"><label>Address</label><span class="line"></span></div>
+    <div class="field half"><label>City</label><span class="line"></span></div>
+    <div class="field third"><label>Zip</label><span class="line"></span></div>
+  </div>
+  <div class="row">
+    <div class="field"><label>Phone (mobile)</label><span class="line"></span></div>
+    <div class="field"><label>Email</label><span class="line"></span></div>
+    <div class="field"><label>Employer</label><span class="line"></span></div>
+  </div>
+  <div class="row">
+    <div class="field"><label>Referring Physician</label><span class="line"></span></div>
+    <div class="field"><label>Primary Care Physician</label><span class="line"></span></div>
+    <div class="field"><label>How did you hear about us?</label><span class="line"></span></div>
+  </div>
+  <div class="row">
+    <div class="field"><label>Emergency Contact Name</label><span class="line"></span></div>
+    <div class="field half"><label>Relationship</label><span class="line"></span></div>
+    <div class="field"><label>Emergency Contact Phone</label><span class="line"></span></div>
+  </div>
+
+  <h2>Reason for Visit</h2>
+  <div class="row">
+    <div class="field"><label>What brings you in today?</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
+  </div>
+  <div class="row">
+    <div class="field half"><label>How long have you had this problem?</label><span class="line"></span></div>
+    <div class="field"><label>How does it affect your daily life?</label><span class="line"></span></div>
+  </div>
+
+  <label style="font-size:11px; color:#888; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:6px;">Current Pain Level (circle one)</label>
+  <div class="pain-scale">
+    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+  </div>
+
+  <div class="row">
+    <div class="field"><label>What makes it worse?</label><span class="line"></span></div>
+    <div class="field"><label>What makes it better?</label><span class="line"></span></div>
+  </div>
+
+  <h2>Medical History</h2>
+  <p style="font-size:11px; color:#888; margin-bottom:8px;">Check all that apply:</p>
+  <div class="checks">
+    <label><input type="checkbox"> Diabetes</label>
+    <label><input type="checkbox"> Arthritis (RA/OA)</label>
+    <label><input type="checkbox"> Heart Disease</label>
+    <label><input type="checkbox"> High Blood Pressure</label>
+    <label><input type="checkbox"> Stroke</label>
+    <label><input type="checkbox"> Osteoporosis</label>
+    <label><input type="checkbox"> Cancer</label>
+    <label><input type="checkbox"> Fibromyalgia</label>
+    <label><input type="checkbox"> Autoimmune Disorder</label>
+    <label><input type="checkbox"> Pacemaker</label>
+    <label><input type="checkbox"> Seizures/Epilepsy</label>
+    <label><input type="checkbox"> TBI</label>
+    <label><input type="checkbox"> Blood Clotting Issues</label>
+    <label><input type="checkbox"> Depression/Anxiety</label>
+    <label><input type="checkbox"> Hepatitis (A, B, or C)</label>
+  </div>
+  <div class="row" style="margin-top:8px;">
+    <div class="field"><label>Other conditions / surgeries / hospitalizations</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
+  </div>
+
+  <h2>Medications & Allergies</h2>
+  <div class="row">
+    <div class="field"><label>Current medications (name & dose)</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
+    <div class="field"><label>Allergies (medications or other)</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
+  </div>
+
+  <h2>Lifestyle</h2>
+  <div class="row">
+    <div class="field"><label>Do you smoke / use nicotine?</label>
+      <div class="checks"><label><input type="checkbox"> No</label><label><input type="checkbox"> Yes — type/amount: <span class="line" style="width:80px; display:inline-block;"></span></label></div>
+    </div>
+    <div class="field"><label>Do you drink alcohol?</label>
+      <div class="checks"><label><input type="checkbox"> No</label><label><input type="checkbox"> Yes — how much: <span class="line" style="width:80px; display:inline-block;"></span></label></div>
+    </div>
+    <div class="field"><label>Daily caffeine intake?</label>
+      <div class="checks"><label><input type="checkbox"> None</label><label><input type="checkbox"> Amount: <span class="line" style="width:80px; display:inline-block;"></span></label></div>
+    </div>
+  </div>
+
+  <h2>Consent to Treatment</h2>
+  <div class="consent-box">
+    By signing below, I authorize Herel Physical Therapy to provide treatment to me. I understand treatment may include therapeutic exercises, manual therapy, and other modalities as deemed appropriate. I understand I am financially responsible for all charges regardless of insurance coverage. I authorize contact via my mobile number for appointment reminders and account matters.
+  </div>
+  <div class="sig-row">
+    <div class="field"><label>Patient Signature</label><span class="line"></span></div>
+    <div class="field date"><label>Date</label><span class="line"></span></div>
+  </div>
+  <p class="note">If patient is a minor, parent/guardian signature required above.</p>
+
+  <button class="print-btn" onclick="window.print()">Print Form</button>
+
+</body>
+</html>
