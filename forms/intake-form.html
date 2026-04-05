@@ -6,140 +6,196 @@
   <title>Patient Intake Form | Herel Physical Therapy</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; font-size: 13px; color: #222; background: #fff; padding: 32px; max-width: 760px; margin: 0 auto; }
+    body { font-family: Arial, sans-serif; font-size: 13px; color: #222; background: #f5f5f5; }
+    .page { background: #fff; max-width: 780px; margin: 32px auto; padding: 40px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); border-radius: 8px; }
     .logo { font-size: 22px; font-weight: 700; letter-spacing: -1px; margin-bottom: 4px; }
     .logo span { color: #C4A882; }
-    .subtitle { font-size: 11px; color: #888; margin-bottom: 24px; }
-    h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5B7C6E; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin: 20px 0 12px; }
-    .row { display: flex; gap: 16px; margin-bottom: 10px; }
-    .field { flex: 1; }
-    .field.half { flex: 0.5; }
-    .field.third { flex: 0.33; }
-    label { display: block; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
-    .line { border: none; border-bottom: 1px solid #bbb; width: 100%; height: 22px; display: block; background: transparent; }
-    .checks { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 8px; }
-    .checks label { font-size: 12px; color: #333; text-transform: none; letter-spacing: 0; display: flex; align-items: center; gap: 5px; }
-    .checks input[type=checkbox] { width: 13px; height: 13px; }
-    .pain-scale { display: flex; gap: 0; margin: 6px 0 12px; }
-    .pain-scale span { flex: 1; text-align: center; font-size: 11px; border: 1px solid #bbb; padding: 5px 0; border-left: none; }
-    .pain-scale span:first-child { border-left: 1px solid #bbb; border-radius: 4px 0 0 4px; }
-    .pain-scale span:last-child { border-radius: 0 4px 4px 0; }
-    .consent-box { background: #f8f8f8; border: 1px solid #ddd; border-radius: 6px; padding: 14px; font-size: 11.5px; line-height: 1.6; color: #444; margin: 12px 0; }
-    .sig-row { display: flex; gap: 24px; margin-top: 16px; }
-    .sig-row .field { flex: 2; }
-    .sig-row .field.date { flex: 1; }
-    @media print {
-      body { padding: 16px; }
-      button { display: none; }
+    .subtitle { font-size: 11px; color: #888; margin-bottom: 28px; }
+    h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5B7C6E; border-bottom: 1.5px solid #e0e0e0; padding-bottom: 5px; margin: 24px 0 14px; }
+    .row { display: flex; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
+    .field { flex: 1; min-width: 120px; }
+    .field.half { flex: 0.5; min-width: 100px; }
+    .field.third { flex: 0.33; min-width: 80px; }
+    .field.full { flex: 1 1 100%; }
+    label { display: block; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    input[type=text], input[type=email], input[type=tel], input[type=date], textarea, select {
+      width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 7px 10px;
+      font-size: 13px; color: #222; background: #fafafa; font-family: Arial, sans-serif;
+      transition: border-color 0.2s;
     }
-    .print-btn { display: block; margin: 24px auto 0; padding: 10px 32px; background: #5B7C6E; color: #fff; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
-    .note { font-size: 11px; color: #999; margin-top: 4px; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: #5B7C6E; background: #fff; }
+    textarea { resize: vertical; min-height: 52px; }
+    .checks { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 4px; }
+    .checks label { font-size: 12px; color: #333; text-transform: none; letter-spacing: 0; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .checks input[type=checkbox], .checks input[type=radio] { width: 14px; height: 14px; accent-color: #5B7C6E; cursor: pointer; }
+    .consent-box { background: #f8f8f8; border: 1px solid #e0e0e0; border-radius: 6px; padding: 14px; font-size: 12px; line-height: 1.7; color: #555; margin: 10px 0 16px; }
+    .sig-note { font-size: 11px; color: #999; margin-top: 6px; }
+    .submit-btn { display: block; width: 100%; margin-top: 28px; padding: 13px; background: #5B7C6E; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .submit-btn:hover { background: #4a6a5d; }
+    @media (max-width: 600px) {
+      .page { padding: 20px; margin: 0; border-radius: 0; }
+      .field.half, .field.third { min-width: 100%; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; margin: 0; padding: 20px; }
+      .submit-btn { display: none; }
+    }
   </style>
 </head>
 <body>
+<div class="page">
 
   <div class="logo">Herel <span>PT</span></div>
   <div class="subtitle">73010 El Paseo Suite 2B, Palm Desert, CA 92260 &nbsp;|&nbsp; 442-234-5364 &nbsp;|&nbsp; HerelTherapy@gmail.com</div>
 
-  <h2>Patient Information</h2>
-  <div class="row">
-    <div class="field"><label>Full Name</label><span class="line"></span></div>
-    <div class="field half"><label>Date of Birth</label><span class="line"></span></div>
-    <div class="field half"><label>Today's Date</label><span class="line"></span></div>
-  </div>
-  <div class="row">
-    <div class="field"><label>Address</label><span class="line"></span></div>
-    <div class="field half"><label>City</label><span class="line"></span></div>
-    <div class="field third"><label>Zip</label><span class="line"></span></div>
-  </div>
-  <div class="row">
-    <div class="field"><label>Phone (mobile)</label><span class="line"></span></div>
-    <div class="field"><label>Email</label><span class="line"></span></div>
-    <div class="field"><label>Employer</label><span class="line"></span></div>
-  </div>
-  <div class="row">
-    <div class="field"><label>Referring Physician</label><span class="line"></span></div>
-    <div class="field"><label>Primary Care Physician</label><span class="line"></span></div>
-    <div class="field"><label>How did you hear about us?</label><span class="line"></span></div>
-  </div>
-  <div class="row">
-    <div class="field"><label>Emergency Contact Name</label><span class="line"></span></div>
-    <div class="field half"><label>Relationship</label><span class="line"></span></div>
-    <div class="field"><label>Emergency Contact Phone</label><span class="line"></span></div>
-  </div>
+  <form name="intake-form" method="POST" netlify data-netlify="true">
+    <input type="hidden" name="form-name" value="intake-form">
 
-  <h2>Reason for Visit</h2>
-  <div class="row">
-    <div class="field"><label>What brings you in today?</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
-  </div>
-  <div class="row">
-    <div class="field half"><label>How long have you had this problem?</label><span class="line"></span></div>
-    <div class="field"><label>How does it affect your daily life?</label><span class="line"></span></div>
-  </div>
-
-  <label style="font-size:11px; color:#888; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:6px;">Current Pain Level (circle one)</label>
-  <div class="pain-scale">
-    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-  </div>
-
-  <div class="row">
-    <div class="field"><label>What makes it worse?</label><span class="line"></span></div>
-    <div class="field"><label>What makes it better?</label><span class="line"></span></div>
-  </div>
-
-  <h2>Medical History</h2>
-  <p style="font-size:11px; color:#888; margin-bottom:8px;">Check all that apply:</p>
-  <div class="checks">
-    <label><input type="checkbox"> Diabetes</label>
-    <label><input type="checkbox"> Arthritis (RA/OA)</label>
-    <label><input type="checkbox"> Heart Disease</label>
-    <label><input type="checkbox"> High Blood Pressure</label>
-    <label><input type="checkbox"> Stroke</label>
-    <label><input type="checkbox"> Osteoporosis</label>
-    <label><input type="checkbox"> Cancer</label>
-    <label><input type="checkbox"> Fibromyalgia</label>
-    <label><input type="checkbox"> Autoimmune Disorder</label>
-    <label><input type="checkbox"> Pacemaker</label>
-    <label><input type="checkbox"> Seizures/Epilepsy</label>
-    <label><input type="checkbox"> TBI</label>
-    <label><input type="checkbox"> Blood Clotting Issues</label>
-    <label><input type="checkbox"> Depression/Anxiety</label>
-    <label><input type="checkbox"> Hepatitis (A, B, or C)</label>
-  </div>
-  <div class="row" style="margin-top:8px;">
-    <div class="field"><label>Other conditions / surgeries / hospitalizations</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
-  </div>
-
-  <h2>Medications & Allergies</h2>
-  <div class="row">
-    <div class="field"><label>Current medications (name & dose)</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
-    <div class="field"><label>Allergies (medications or other)</label><span class="line"></span><span class="line" style="margin-top:6px;"></span></div>
-  </div>
-
-  <h2>Lifestyle</h2>
-  <div class="row">
-    <div class="field"><label>Do you smoke / use nicotine?</label>
-      <div class="checks"><label><input type="checkbox"> No</label><label><input type="checkbox"> Yes — type/amount: <span class="line" style="width:80px; display:inline-block;"></span></label></div>
+    <h2>Patient Information</h2>
+    <div class="row">
+      <div class="field"><label>Full Name *</label><input type="text" name="name" required></div>
+      <div class="field half"><label>Date of Birth *</label><input type="date" name="dob" required></div>
+      <div class="field half"><label>Today's Date</label><input type="date" name="today"></div>
     </div>
-    <div class="field"><label>Do you drink alcohol?</label>
-      <div class="checks"><label><input type="checkbox"> No</label><label><input type="checkbox"> Yes — how much: <span class="line" style="width:80px; display:inline-block;"></span></label></div>
+    <div class="row">
+      <div class="field"><label>Street Address</label><input type="text" name="address"></div>
+      <div class="field half"><label>City</label><input type="text" name="city"></div>
+      <div class="field third"><label>State</label><input type="text" name="state" maxlength="2" placeholder="CA"></div>
+      <div class="field third"><label>Zip</label><input type="text" name="zip" maxlength="10"></div>
     </div>
-    <div class="field"><label>Daily caffeine intake?</label>
-      <div class="checks"><label><input type="checkbox"> None</label><label><input type="checkbox"> Amount: <span class="line" style="width:80px; display:inline-block;"></span></label></div>
+    <div class="row">
+      <div class="field"><label>Mobile Phone *</label><input type="tel" name="phone" required></div>
+      <div class="field"><label>Email *</label><input type="email" name="email" required></div>
+      <div class="field"><label>Employer</label><input type="text" name="employer"></div>
     </div>
-  </div>
+    <div class="row">
+      <div class="field"><label>Referring Physician</label><input type="text" name="referring_physician"></div>
+      <div class="field"><label>Primary Care Physician</label><input type="text" name="primary_physician"></div>
+      <div class="field"><label>How did you hear about us?</label><input type="text" name="referral_source"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Emergency Contact Name</label><input type="text" name="emergency_name"></div>
+      <div class="field half"><label>Relationship</label><input type="text" name="emergency_relationship"></div>
+      <div class="field"><label>Emergency Contact Phone</label><input type="tel" name="emergency_phone"></div>
+    </div>
 
-  <h2>Consent to Treatment</h2>
-  <div class="consent-box">
-    By signing below, I authorize Herel Physical Therapy to provide treatment to me. I understand treatment may include therapeutic exercises, manual therapy, and other modalities as deemed appropriate. I understand I am financially responsible for all charges regardless of insurance coverage. I authorize contact via my mobile number for appointment reminders and account matters.
-  </div>
-  <div class="sig-row">
-    <div class="field"><label>Patient Signature</label><span class="line"></span></div>
-    <div class="field date"><label>Date</label><span class="line"></span></div>
-  </div>
-  <p class="note">If patient is a minor, parent/guardian signature required above.</p>
+    <h2>Insurance Information</h2>
+    <div class="row">
+      <div class="field"><label>Insurance Provider</label><input type="text" name="insurance_provider"></div>
+      <div class="field"><label>Member ID</label><input type="text" name="insurance_member_id"></div>
+      <div class="field"><label>Group Number</label><input type="text" name="insurance_group"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Subscriber Name (if different)</label><input type="text" name="subscriber_name"></div>
+      <div class="field half"><label>Subscriber DOB</label><input type="date" name="subscriber_dob"></div>
+      <div class="field"><label>Secondary Insurance (if any)</label><input type="text" name="insurance_secondary"></div>
+    </div>
 
-  <button class="print-btn" onclick="window.print()">Print Form</button>
+    <h2>Reason for Visit</h2>
+    <div class="row">
+      <div class="field full"><label>What brings you in today? *</label><textarea name="chief_complaint" required></textarea></div>
+    </div>
+    <div class="row">
+      <div class="field half"><label>How long have you had this problem?</label><input type="text" name="duration" placeholder="e.g. 3 weeks"></div>
+      <div class="field"><label>How does it affect your daily life?</label><input type="text" name="daily_impact"></div>
+    </div>
+    <div class="row">
+      <div class="field third"><label>Pain Now (0-10)</label>
+        <select name="pain_current"><option value="">-</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="field third"><label>Pain at Worst (0-10)</label>
+        <select name="pain_worst"><option value="">-</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="field third"><label>Pain at Best (0-10)</label>
+        <select name="pain_best"><option value="">-</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field full"><label>Pain Description (check all that apply)</label>
+        <div class="checks" style="margin-top:6px;">
+          <label><input type="checkbox" name="pain_type" value="Dull/Achy"> Dull/Achy</label>
+          <label><input type="checkbox" name="pain_type" value="Sharp"> Sharp</label>
+          <label><input type="checkbox" name="pain_type" value="Burning"> Burning</label>
+          <label><input type="checkbox" name="pain_type" value="Throbbing"> Throbbing</label>
+          <label><input type="checkbox" name="pain_type" value="Shooting"> Shooting</label>
+          <label><input type="checkbox" name="pain_type" value="Numbness/Tingling"> Numbness/Tingling</label>
+          <label><input type="checkbox" name="pain_type" value="Constant"> Constant</label>
+          <label><input type="checkbox" name="pain_type" value="Intermittent"> Intermittent</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field"><label>What makes it worse?</label><input type="text" name="aggravating"></div>
+      <div class="field"><label>What makes it better?</label><input type="text" name="relieving"></div>
+    </div>
 
+    <h2>Medical History</h2>
+    <div class="checks">
+      <label><input type="checkbox" name="history" value="Diabetes"> Diabetes</label>
+      <label><input type="checkbox" name="history" value="Arthritis (RA/OA)"> Arthritis (RA/OA)</label>
+      <label><input type="checkbox" name="history" value="Heart Disease"> Heart Disease</label>
+      <label><input type="checkbox" name="history" value="High Blood Pressure"> High Blood Pressure</label>
+      <label><input type="checkbox" name="history" value="Stroke"> Stroke</label>
+      <label><input type="checkbox" name="history" value="Osteoporosis"> Osteoporosis</label>
+      <label><input type="checkbox" name="history" value="Cancer"> Cancer</label>
+      <label><input type="checkbox" name="history" value="Fibromyalgia"> Fibromyalgia</label>
+      <label><input type="checkbox" name="history" value="Autoimmune Disorder"> Autoimmune Disorder</label>
+      <label><input type="checkbox" name="history" value="Pacemaker"> Pacemaker</label>
+      <label><input type="checkbox" name="history" value="Seizures/Epilepsy"> Seizures/Epilepsy</label>
+      <label><input type="checkbox" name="history" value="TBI"> TBI</label>
+      <label><input type="checkbox" name="history" value="Blood Clotting Issues"> Blood Clotting Issues</label>
+      <label><input type="checkbox" name="history" value="Depression/Anxiety"> Depression/Anxiety</label>
+      <label><input type="checkbox" name="history" value="Hepatitis (A/B/C)"> Hepatitis (A/B/C)</label>
+    </div>
+    <div class="row" style="margin-top:10px;">
+      <div class="field full"><label>Other conditions, surgeries, or hospitalizations</label><textarea name="other_history"></textarea></div>
+    </div>
+
+    <h2>Recent Health</h2>
+    <div class="row">
+      <div class="field full">
+        <label>Any illnesses in the past 2-3 weeks? (cold, flu, infection, etc.)</label>
+        <div class="checks" style="margin-top:6px; margin-bottom:8px;">
+          <label><input type="radio" name="recent_illness" value="No"> No</label>
+          <label><input type="radio" name="recent_illness" value="Yes"> Yes</label>
+        </div>
+        <input type="text" name="recent_illness_detail" placeholder="If yes, please describe">
+      </div>
+    </div>
+
+    <h2>Medications &amp; Allergies</h2>
+    <div class="row">
+      <div class="field"><label>Current medications (name &amp; dose)</label><textarea name="medications"></textarea></div>
+      <div class="field"><label>Allergies (medications or other)</label><textarea name="allergies"></textarea></div>
+    </div>
+
+    <h2>Lifestyle</h2>
+    <div class="row">
+      <div class="field"><label>Smoke / use nicotine?</label>
+        <div class="checks" style="margin-top:6px;"><label><input type="radio" name="nicotine" value="No"> No</label><label><input type="radio" name="nicotine" value="Yes"> Yes</label></div>
+      </div>
+      <div class="field"><label>Drink alcohol?</label>
+        <div class="checks" style="margin-top:6px;"><label><input type="radio" name="alcohol" value="No"> No</label><label><input type="radio" name="alcohol" value="Yes"> Yes</label></div>
+      </div>
+      <div class="field"><label>Daily caffeine?</label>
+        <div class="checks" style="margin-top:6px;"><label><input type="radio" name="caffeine" value="None"> None</label><label><input type="radio" name="caffeine" value="Yes"> Yes</label></div>
+      </div>
+    </div>
+
+    <h2>Consent to Treatment</h2>
+    <div class="consent-box">
+      By submitting this form, I authorize Herel Physical Therapy to provide treatment to me. I understand treatment may include therapeutic exercises, manual therapy, and other modalities as deemed appropriate. I understand I am financially responsible for all charges regardless of insurance coverage. I authorize contact via my mobile number for appointment reminders and account matters.
+    </div>
+    <div class="row">
+      <div class="field"><label>Full Name (as signature) *</label><input type="text" name="signature" required placeholder="Type your full name"></div>
+      <div class="field half"><label>Date *</label><input type="date" name="signature_date" required></div>
+    </div>
+    <p class="sig-note">If patient is a minor, parent/guardian must complete and sign.</p>
+
+    <button type="submit" class="submit-btn">Submit Form</button>
+  </form>
+
+</div>
 </body>
 </html>
